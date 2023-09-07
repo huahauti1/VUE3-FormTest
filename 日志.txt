@@ -1,0 +1,1 @@
+9/6  完成formDesgin传实例到formCenter，测试formCenter能接收到configList的值，该测试打包后时候能接收

@@ -1,0 +1,22 @@
+{
+  "name": "vue3-formbuilder",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --mode development",
+    "build": "vite build --mode production",
+    "preview": "vite preview --mode production"
+  },
+  "dependencies": {
+    "element-plus": "^2.3.9",
+    "pinia": "^2.1.4",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4",
+    "vuedraggable": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "less": "^4.2.0",
+    "vite": "^4.4.6"
+  }
+}

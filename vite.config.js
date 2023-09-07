@@ -8,12 +8,22 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  base:"/huahuati1.github.io/",
+  base:"/VUE3-FormTest/",
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  build: {
+      outDir: "docs",
+      terserOptions: {
+        compress: {
+          //生产环境时移除console
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
+    },
   //跨域
   server:{
 	  host: "0.0.0.0",
@@ -21,16 +31,6 @@ export default defineConfig({
 	  hmr:true,
 	  //设为true时若端口已经被占用则会直接退出，而不是尝试下一个可用端口
 	  strictPort:false,
-	  build: {
-	      minify: "terser",
-	      terserOptions: {
-	        compress: {
-	          //生产环境时移除console
-	          drop_console: true,
-	          drop_debugger: true,
-	        },
-	      },
-	    },
 	  //自定义代理规则
 	  proxy:{
 		  //选项写法

@@ -11,7 +11,7 @@
 							 drag-class ===>  设置目标拖拽时的样式
 							 :sort  ===>  是否开启排序
 							 :list  ===>  被绑定的数组-->
-						<Draggable
+						<draggable
 							animation="300"
 							:group="{				//实现不同数组之间相互拖拽
 								name:'form',		//组名
@@ -24,17 +24,27 @@
 							:sort="false"
 							:list="item.list"
 							item-key="name"
+							@start="onStart"
+							@end="onEnd"
 						>
 							<template #item="{ element }">	
 								<li class="formCmp">{{ element.label }}</li>
 							</template>
-						</Draggable>
+						</draggable>
 					</ul>
 				</li>
 			</ul>
 		</el-col>
-		<el-col :span="16" class="midVue">中间显示
-			<form-center ref="formCenter"></form-center>
+		<el-col :span="16" class="midVue">
+		  <div class="operating-area">
+		    <el-tooltip class="item" effect="dark" content="预览" placement="top">
+		      <el-button @click="handlePreviewForm()"><el-icon><View /></el-icon></el-button>
+		    </el-tooltip>
+		    <el-tooltip class="item" effect="dark" content="清空" placement="top">
+		      <el-button @click="handleClearForItemList()"><el-icon><Delete /></el-icon></el-button>
+		    </el-tooltip>
+		  </div>
+		  <form-center ref="formCenter"></form-center>
 		</el-col>
 		<el-col :span="4" class="rightVue">右侧属性</el-col>
 	</el-row>
@@ -53,11 +63,11 @@
 		
 	export default{
 		name:"form-design",			//在使用<script  setup>的单文件组件时，vue会根据组件文件名自动推导出name属性
-		components: { formCenter,  },
+		components: { formCenter, },
 		setup() {												
 			let configList = ref(formCmpConfig);					//获取左侧组件列表数据
 			let formDesign = ref(getCurrentInstance());				//获取当前组件实例并响应式
-			console.log(formDesign.value);
+			// console.log(formDesign.value);
 			provide("formDesign",formDesign);						//依赖注入
 			// const { proxy }  = getCurrentInstance();
 			// console.log(JSON.stringify(proxy.$data))
@@ -71,16 +81,26 @@
 			// console.log(JSON.stringify(proxy.$attrs))
 			// var list = toRaw(proxy)
 			// console.log(list)
-			console.log(import.meta.env)
+			// console.log(import.meta.env)
 			//配置表单属性
 			let formInfo = ref({
-				formSize: "mini",
+				formSize: "small",
 				formItemLabelWidth: 40,
 				formItemList: [],		//表单中的组件
 			})
+			const onStart=(evt)=>{
+				console.log("开始拖拽");
+				console.log(evt);
+			}
+			const onEnd=(evt)=>{
+				console.log("结束拖拽");
+				console.log(evt);
+			}
 			return{
 				configList,
 				formInfo,
+				onStart,
+				onEnd,
 			}
 		}
 	}
@@ -149,6 +169,17 @@
 	        color: #4395ff;
 	        box-shadow: 1px 1px 2px 1px #4395ff;
 	      }
+	    }
+	  }
+	}
+	.operating-area {
+	  padding-left: 20px;
+	  i {
+	    font-size: 16px;
+	    color: rgb(131, 131, 131);
+	    font-weight: 700;
+	    &:hover {
+	      color: #4395ff;
 	    }
 	  }
 	}

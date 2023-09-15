@@ -117,7 +117,7 @@
 			}
 			// 清空
 			const handleClearForItemList = () => {
-			  formInfo.value.forItemList = [];
+			  formInfo.value.formItemList = [];
 			};
 			const onStart=(evt)=>{
 				console.log("开始拖拽");

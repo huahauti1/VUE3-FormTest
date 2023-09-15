@@ -2,7 +2,7 @@
 	<div class="center">
 		<el-form
 		  label-position="left"
-		  :label-width="`${formDesign.formInfo.formItemLabelWidth}px`"
+		  :label-width="40"
 		  :size="`${formDesign.formInfo.formSize}`"
 		>
 			<ul class="centerFormCmpS">

@@ -1,34 +1,35 @@
 <template>
-	<div class="formUI">
-		<!-- 表单校验 -->
-		<!-- 基础组件 -->
-		<el-form-item v-if="formItem.type === 'button'" :label="formItem.label">
-			<el-button>{{formItem.label}}</el-button>
-		</el-form-item>
-		<!-- 表单组件 -->
-			<!-- 输入框 -->
-		<el-form-item v-if="formItem.type === 'input'" :label="formItem.label">
-			<el-input v-model="formItem.default"></el-input>
-		</el-form-item>
-			<!-- 多行文本框 -->
-		<el-form-item v-if="formItem.type === 'textarea'" :label="formItem.label">
-			<el-input type="textarea" v-model="formItem.default"></el-input>
-		</el-form-item>
-			<!-- 单选 -->
-		<el-form-item v-if="formItem.type === 'radio'" :label="formItem.label">
-			<el-radio></el-radio>
-		</el-form-item>
-			<!-- 多选 -->
-		<el-form-item v-if="formItem.type === 'checkbox'" :label="formItem.label">
-			<el-checkbox></el-checkbox>
-		</el-form-item>	
+	<div class="formComponent">
+	    <!-- 基础组件 -->
+	    <el-form-item v-if="formItem.type === 'button'" :label="formItem.label">
+	        <el-button>{{ formItem.label }}</el-button>
+	    </el-form-item>
+	    <!-- 表单组件 -->
+	    <el-form-item v-if="formItem.type === 'input'" :label="formItem.label">
+	        <el-input v-model="formItem.default"></el-input>
+	    </el-form-item>
+	    <el-form-item
+	        v-if="formItem.type === 'textarea'"
+	        :label="formItem.label"
+	    >
+	        <el-input type="textarea" v-model="formItem.default"></el-input>
+	    </el-form-item>
+	    <el-form-item v-if="formItem.type === 'radio'" :label="formItem.label">
+	        <el-radio></el-radio>
+	    </el-form-item>
+	    <el-form-item
+	        v-if="formItem.type === 'checkbox'"
+	        :label="formItem.label"
+	    >
+	        <el-checkbox></el-checkbox>
+	    </el-form-item>
 	</div>
 </template>
 
 <script>
 	import {computed} from "vue";
 	export default{
-		name:"form-UI",
+		name:"element-ui",
 		//子组件接收值
 		props:{
 			formComponent:Object,//props中的属性必须先定义类型，否则setup中获取的是undefind

@@ -219,13 +219,13 @@ li {
     }
   }
 }
-/deep/.el-tabs__nav-scroll {
+:deep(.el-tabs__nav-scroll) {
   padding-left: 30px;
 }
-/deep/.el-tabs__content {
+:deep(.el-tabs__content) {
   padding: 0 10px;
 }
-/deep/.el-form-item__label {
+:deep(.el-form-item__label) {
   text-align: left;
 }
 </style>

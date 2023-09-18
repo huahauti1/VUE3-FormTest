@@ -47,23 +47,28 @@
 				return ctx.value.ctx;
 			});
 			let formComponents = computed(()=>{
-				//利用计算机属性将formDesign的formInfo.forItemList赋值给formComponents
-				return formDesign.value.formInfo.forItemList || [];
+				//利用计算机属性将formDesign的formInfo.formItemList赋值给formComponents
+				return formDesign.value.formInfo.formItemList || [];
 			});
 			let currentFormItemId = computed(()=>{
 				//利用计算机属性获取实例formDesign当前选中的form组件的id
 				return formDesign.value.formCmpId;
 			});
 			let formComponent = ref({});	//选中的formCmp
+			
 			watch(
 				//监听选中组件并赋值
 				() =>currentFormItemId.value.id,
 				(newV) =>{
+					console.log("-------")
+					console.log(currentFormItemId.value.id)
+					console.log(formComponents.value)
 					formComponents.value.forEach((item) =>{
 						if(item.formItemId === newV){
 							formComponent.value = item;
 						}
 					});
+					console.log(formComponents.value)
 				}
 			);
 			let activeName = ref("formItem");		//tabs绑定值

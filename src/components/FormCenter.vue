@@ -3,7 +3,7 @@
 		<el-form
 		  label-position="left"
 		  :label-width="40"
-		  :size="`${formDesign.formInfo.formSize}`"
+		  size="small"
 		>
 			<ul class="centerFormCmpS">
 				<draggable class="dargCmpS"
@@ -193,7 +193,7 @@ li {
       border-top: 4px solid #4395ff;
       background-color: #cde3ff;
     }
-    /deep/.el-form-item__label {
+    :deep(.el-form-item__label) {
       white-space: nowrap;
       margin-right: 20px;
     }

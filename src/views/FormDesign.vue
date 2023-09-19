@@ -90,8 +90,6 @@
 			// console.log(formDesign.value);
 			let formDesign = ref(getCurrentInstance().proxy); // 获取实例并响应式
 			console.log(ref(getCurrentInstance().proxy))
-			let raw = toRaw(ref(getCurrentInstance().proxy).value);
-			console.log(raw)
 			provide("formDesign",formDesign);						//依赖注入
 			let componentsList = ref(formCmpConfig); // 左侧组件列表数据
 			let formCmpId = ref({

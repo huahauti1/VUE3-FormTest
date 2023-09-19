@@ -2,8 +2,8 @@
 	<div class="center">
 		<el-form
 		  label-position="left"
-		  :label-width="40"
-		  size="small"
+		  :label-width="`${formDesign.formInfo.formItemLabelWidth}px`"
+		  :size="`${formDesign.formInfo.formSize}`"
 		>
 			<ul class="centerFormCmpS">
 				<draggable class="dargCmpS"
@@ -54,10 +54,8 @@
 		setup(){
 			//获取父组件FormDesign传过来的实例formDesign
 			let ctx = inject("formDesign");
-			console.log(ctx.value.formInfo)
 			let formDesign = computed(()=>{
 				//利用计算机属性获取实例FormDesign的实例ctx
-				console.log(ctx.value)
 				return ctx.value;
 			});
 			// console.log(formDesign)

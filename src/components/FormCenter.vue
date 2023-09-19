@@ -54,11 +54,13 @@
 		setup(){
 			//获取父组件FormDesign传过来的实例formDesign
 			let ctx = inject("formDesign");
+			console.log(ctx.value.formInfo)
 			let formDesign = computed(()=>{
 				//利用计算机属性获取实例FormDesign的实例ctx
-				return ctx.value.ctx;
+				console.log(ctx.value)
+				return ctx.value;
 			});
-			console.log(formDesign)
+			// console.log(formDesign)
 			let formComponents = computed(()=>{
 				//利用计算机属性将formDesign的formInfo.formItemList赋值给formComponents
 				return formDesign.value.formInfo.formItemList || [];

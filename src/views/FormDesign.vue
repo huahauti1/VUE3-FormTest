@@ -76,7 +76,7 @@
 	import formCenter from "../components/FormCenter.vue";
 	import formConfig from "../components/FormCmpConfig.vue";
 	import formViewer from "../views/FormViewer.vue";
-	import {ref} from "@vue/reactivity";						//VUE3.0导入ref函数用于访问元素节点
+	import {ref,toRaw} from "@vue/reactivity";						//VUE3.0导入ref函数用于访问元素节点
 	import {getCurrentInstance,provide} from "@vue/runtime-core";
 	/*VUE3.0中所有组件所用到的数据，方法等均要配置在setup中
 	setup的两种返回值：（1）返回一个对象，为模板提供数据，在模板中可直接使用此对象中的所有属性和方法
@@ -88,7 +88,10 @@
 		components: { formCenter, formConfig,formViewer},
 		setup() {												
 			// console.log(formDesign.value);
-			let formDesign = ref(getCurrentInstance()); // 获取实例并响应式
+			let formDesign = ref(getCurrentInstance().proxy); // 获取实例并响应式
+			console.log(ref(getCurrentInstance().proxy))
+			let raw = toRaw(ref(getCurrentInstance().proxy).value);
+			console.log(raw)
 			provide("formDesign",formDesign);						//依赖注入
 			let componentsList = ref(formCmpConfig); // 左侧组件列表数据
 			let formCmpId = ref({

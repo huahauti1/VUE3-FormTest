@@ -44,7 +44,7 @@
 			let ctx = inject("formDesign");	//获取formDesign实例
 			let formDesign = computed(()=>{
 				//利用计算机属性获取实例formDesign的实例ctx
-				return ctx.value.ctx;
+				return ctx.value;
 			});
 			let formComponents = computed(()=>{
 				//利用计算机属性将formDesign的formInfo.formItemList赋值给formComponents

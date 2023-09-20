@@ -57,13 +57,14 @@
 		  v-model="dialogVisible"
 		  title="表单预览"
 		  width="40%"
+		  destroy-on-close
 		>
 		  <form-viewer :formInfo='formInfo'></form-viewer>
 		  <template #footer>
 		    <span class="dialog-footer">
-		      <el-button @click="dialogVisible = false">Cancel</el-button>
+		      <el-button @click="dialogVisible = false">取消</el-button>
 		      <el-button type="primary" @click="dialogVisible = false"
-		        >Confirm</el-button
+		        >确认</el-button
 		      >
 		    </span>
 		  </template>

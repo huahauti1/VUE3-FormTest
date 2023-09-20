@@ -22,18 +22,21 @@
 							@click="handelFormComponentClick(element)"
 							:class="
 								element.formItemId === formDesign.formCmpId.id ? 'active' : '' ">
+								<formCmpUI :formComponent="element"></formCmpUI>
+								<el-icon
+								    class="iconDelete"
+									@click="handleFormCmpDelet(element.formItemId)"
+									v-show="element.formItemId === formDesign.formCmpId.id">
+									<Delete />
+								</el-icon>
+								<el-icon
+									class="iconCopy"
+									v-show="element.formItemId === formDesign.formCmpId.id"
+									@click="handleFoemCmpCopy(element)">
+									<CopyDocument />
+								</el-icon>
 							</li>
-							<formCmpUI :formComponent="element"></formCmpUI>
-							<el-icon
-								@click="handleFormCmpDelet(element.formItemId)"
-								v-show="element.formItemId === formDesign.formCmpId.id">
-								<Delete />
-							</el-icon>
-							<el-icon
-								v-show="element.formItemId === formDesign.formCmpId.id"
-								@click="handleFoemCmpCopy(element)">
-								<CopyDocument />
-							</el-icon>
+							
 						</div>
 						
 					</template>
@@ -182,10 +185,10 @@ li {
           color: #fff;
         }
       }
-      .el-icon-delete {
+      .iconDelete {
         right: 20px;
       }
-      .el-icon-copy-document {
+      .iconCopy{
         right: 0;
       }
     }
